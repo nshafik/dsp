@@ -78,7 +78,9 @@ varargout{1} = handles.output;
 
 % --- Executes on button press in plot_spect.
 function plot_spect_Callback(hObject, eventdata, handles)
-[x,fs]=audioread('mchocola.wma');
+x_spec_half=[8:-1:0 0.2*randn(1,33-9)];
+x_spec=[x_spec_half(32:-1:2)];
+x=ifft(x_spec);
 fs = 12000;
 op=(get(handles.op,'value')) ;
 rate=2^(get(handles.r,'value')); 
